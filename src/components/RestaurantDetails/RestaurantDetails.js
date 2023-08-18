@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/api.js';
 import { useParams } from 'react-router-dom';
-import { Container, Image, Row, Col, Card, ListGroup, Modal} from 'react-bootstrap';
+import { Container, Image, Row, Col, ListGroup, Modal} from 'react-bootstrap';
 import './RestaurantDetails.css';
 import Recommendations from '../Recommendations/Recommendations';
 import MapComponent from '../MapComponent/MapComponent';

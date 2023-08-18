@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import api from '../services/api.js';
 import { Link, useLocation } from 'react-router-dom';
-import { Container, Form, Button, Card, Dropdown } from 'react-bootstrap';
+import { Form, Button, Card, Dropdown } from 'react-bootstrap';
 import './RestaurantList.css';
 import BackToTopButton from '../BackToTop/BackToTop.js';
 
@@ -104,23 +104,25 @@ function RestaurantList() {
             fetchRestaurants(1);
         }
         initialLoad.current = false;
-    }, []);
+    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants]);
+    
 
     // Add and remove scroll event listener
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-
+    
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [hasMore, searchQuery, cuisine, priceRange, openNow]);
-
+    }, [hasMore, searchQuery, cuisine, priceRange, openNow, handleScroll]);
+    
     // Fetch more restaurants when page changes
     useEffect(() => {
         if (!fetchedPages.includes(page)) {
             fetchRestaurants(page, searchQuery, cuisine, priceRange, openNow, sortOption);
         }
-    }, [page]);
+    }, [page, fetchedPages, searchQuery, cuisine, priceRange, openNow, sortOption, fetchRestaurants]);
+    
 
     // Fetch restaurants when search is triggered
     useEffect(() => {
@@ -128,7 +130,7 @@ function RestaurantList() {
             fetchRestaurants(1, searchQuery, cuisine, priceRange, openNow, sortOption);
             setTriggerSearch(false);
         }
-    }, [triggerSearch]);
+    }, [triggerSearch, searchQuery, cuisine, priceRange, openNow, sortOption, fetchRestaurants]);
     
     
 

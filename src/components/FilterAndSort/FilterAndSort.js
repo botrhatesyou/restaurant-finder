@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Dropdown } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import './FilterAndSort.css';
 
 const FilterAndSort = ({ onFilterChange, onSortChange }) => {
