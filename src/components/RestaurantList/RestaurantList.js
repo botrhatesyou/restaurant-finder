@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import api from '../services/api.js';
 import { Link, useLocation } from 'react-router-dom';
 import { Form, Button, Card, Dropdown } from 'react-bootstrap';
@@ -24,12 +24,12 @@ function RestaurantList() {
     const [isFirstLoad, setIsFirstLoad] = useState(true);
 
     // Function to fetch restaurants based on filters and pagination
-    const fetchRestaurants = (page, searchTerm, selectedCuisine, selectedPriceRange, isOpenNow, selectedSortOption) => {
+    const fetchRestaurants = useCallback((page, searchTerm, selectedCuisine, selectedPriceRange, isOpenNow, selectedSortOption) => {
         if (fetchedPages.includes(page) || loadingRef.current) return;
-
+    
         setLoading(true);
         loadingRef.current = true;
-
+    
         api.get(`/restaurants`, { 
             params: {
                 term: searchTerm,
@@ -57,7 +57,8 @@ function RestaurantList() {
             setLoading(false);
             loadingRef.current = false;
         });
-    };
+    }, [fetchedPages, loadingRef]);
+    
 
     // Handle search form submission
     const handleSearch = (e) => {
@@ -76,13 +77,14 @@ function RestaurantList() {
 
     // Handle infinite scrolling
     const threshold = 200;
-    const handleScroll = () => {
+    const handleScroll = useCallback(() => {
         if (initialLoad.current) return;
-
+    
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - threshold && !loadingRef.current && hasMore) {
             setPage(prevPage => prevPage + 1);
         }
-    };
+    }, [hasMore]);
+    
 
     // Get cuisine from URL query parameter
     const location = useLocation();
