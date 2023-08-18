@@ -1,15 +1,12 @@
-import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import React, { useState } from 'react';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-// Define the style for the map container
 const containerStyle = {
   width: '100%',
   height: '400px'
 };
 
-// MapComponent receives latitude and longitude as props and renders a Google Map centered at that location
-function MapComponent({ lat, lng }) {
-  // Define the center of the map using the received latitude and longitude
+function MapComponent({ lat, lng, restaurant }) {
   const center = {
     lat: lat,
     lng: lng
@@ -17,19 +14,36 @@ function MapComponent({ lat, lng }) {
 
   const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
+  // State to track the visibility of the InfoWindow
+  const [infoVisible, setInfoVisible] = useState(false);
+
   return (
-    // LoadScript component loads the Google Maps JavaScript API
     <LoadScript
       googleMapsApiKey={apiKey}
     >
-      {/* GoogleMap component renders the map */}
       <GoogleMap
-        mapContainerStyle={containerStyle} // Apply the container style
-        center={center} // Set the center of the map
-        zoom={15} // Set the zoom level
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={15}
       >
-        {/* Marker component adds a marker at the center of the map */}
-        <Marker position={center} zIndex={999} />
+        <Marker
+          position={center}
+          zIndex={999}
+          onClick={() => setInfoVisible(!infoVisible)} // Toggle the visibility of the InfoWindow
+        />
+        {infoVisible && (
+          <InfoWindow
+            position={center}
+            onCloseClick={() => setInfoVisible(false)} // Hide the InfoWindow when the close button is clicked
+          >
+            <div>
+              <h2>{restaurant.name}</h2>
+              <p>{restaurant.address}</p>
+              <p>{restaurant.phone}</p>
+              <p>{restaurant.rating}</p>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </LoadScript>
   )
