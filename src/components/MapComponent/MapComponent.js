@@ -29,18 +29,17 @@ function MapComponent({ lat, lng, restaurant }) {
         <Marker
           position={center}
           zIndex={999}
-          onClick={() => setInfoVisible(!infoVisible)} // Toggle the visibility of the InfoWindow
+          onClick={() => setInfoVisible(!infoVisible)}
         />
-        {infoVisible && (
+        {infoVisible && restaurant && (
           <InfoWindow
             position={center}
-            onCloseClick={() => setInfoVisible(false)} // Hide the InfoWindow when the close button is clicked
+            onCloseClick={() => setInfoVisible(false)}
           >
             <div>
               <h2>{restaurant.name}</h2>
-              <p>{restaurant.address}</p>
+              <p>{restaurant.location.address1}</p>
               <p>{restaurant.phone}</p>
-              <p>{restaurant.rating}</p>
             </div>
           </InfoWindow>
         )}

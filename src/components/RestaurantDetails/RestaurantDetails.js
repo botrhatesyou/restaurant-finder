@@ -123,10 +123,10 @@ function RestaurantDetails() {
                     <MapComponent 
                         lat={restaurant.coordinates.latitude} 
                         lng={restaurant.coordinates.longitude} 
+                        restaurant={restaurant} // Pass the entire restaurant object as a prop
                     />
                 </div>
             )}
-
             <Recommendations restaurantId={id} />
         </Container>
     );
