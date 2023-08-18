@@ -9,11 +9,7 @@ require('dotenv').config();
 const API_KEY = process.env.YELP_API_KEY;
 // CORS configuration
 const corsOptions = {
-<<<<<<< HEAD
     origin: ['http://localhost:3000', 'https://restaurant-finding.netlify.app'],
-=======
-    origin: ['http://localhost:3000', 'https://spontaneous-caramel-d2552b.netlify.app'],
->>>>>>> heroku/main
     optionsSuccessStatus: 200
 };
 
@@ -22,11 +18,7 @@ app.use(cors(corsOptions));
 // Route for fetching restaurants based on query parameters
 app.get('/api/restaurants', async (req, res) => {
     // Extract query parameters
-<<<<<<< HEAD
     let {open_now, price, sort_by, latitude, longitude, rating } = req.query;
-=======
-    let { term, categories, open_now, price, sort_by, latitude, longitude, rating } = req.query;
->>>>>>> heroku/main
 
     // Handle the open_now parameter
     if (open_now === 'true') {
