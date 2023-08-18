@@ -1,0 +1,46 @@
+/* FilterAndSort.css */
+
+.filter-sort-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-options {
+  display: flex;
+  align-items: center;
+}
+
+
+.sort-options {
+  display: flex;
+  align-items: center;
+}
+
+select {
+  margin-right: 10px;
+}
+
+.filter-button-container .apply-filters {
+  width: 120px;
+  padding: 8px 15px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.filter-button-container .apply-filters:hover {
+  background-color: #0056b3;
+}
+
+.open-now-checkbox {
+  margin-right: 10px;
+}
+
+.filter-options .form-check-label {
+  white-space: nowrap;
+}

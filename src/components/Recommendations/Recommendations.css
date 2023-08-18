@@ -1,0 +1,40 @@
+/* Recommendations Section Styles */
+.recommendations-section {
+  margin-top: 40px;
+}
+
+.rec-restaurant-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.rec-restaurant-card-link:hover {
+  text-decoration: none;
+}
+
+.rec-restaurant-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.rec-restaurant-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rec-restaurant-card .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.rec-restaurant-card .card-body {
+  padding: 15px;
+}
+
+.rec-restaurant-card .btn {
+  width: 100%;
+  border-radius: 0;
+}

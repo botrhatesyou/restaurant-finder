@@ -1,0 +1,54 @@
+/* MapPage.css */
+
+.map-page h1 {
+  font-size: 2rem;
+  color: #007BFF;
+  margin-bottom: 20px;
+}
+
+.map-page p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.map-page .filter-sort-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.map-page .filter-options {
+  display: flex;
+  align-items: center;
+}
+
+.map-page .sort-options {
+  display: flex;
+  align-items: center;
+}
+
+.map-page select {
+  margin-right: 10px;
+}
+
+.map-page button {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.map-page button:hover {
+  background-color: #0056b3;
+}
+
+.map-page footer {
+  margin-top: 40px;
+  font-size: 1rem;
+  color: #333;
+}

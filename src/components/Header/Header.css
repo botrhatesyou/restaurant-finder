@@ -1,0 +1,23 @@
+/* Header.css*/
+
+.header {
+  padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.brand-container {
+  padding-left: 20px; /* Add padding to the left of the "Restaurant Finder" text */
+}
+
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #007BFF;
+}

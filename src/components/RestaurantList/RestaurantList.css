@@ -1,0 +1,159 @@
+/* RestaurantList.css */
+h2 {
+  color: #007BFF;
+  margin-bottom: 20px;
+}
+
+img {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+a {
+  color: #007BFF;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 20px;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* Restaurant List Styles */
+.restaurant-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.advanced-search {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.advanced-search > * {
+  flex: 1 1 auto;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.advanced-search > :last-child {
+  margin-right: 0;
+}
+
+button, input, select {
+  margin-right: 10px;
+}
+
+.advanced-search select,
+.advanced-search input,
+.advanced-search button {
+  width: 100%;
+  margin-bottom: 5px; /* Add some space between the filters */
+}
+
+.advanced-search button {
+  width: auto;
+}
+
+.advanced-search .form-check {
+  display: flex;
+  align-items: center;
+}
+
+.advanced-search .form-check-label {
+  margin-left: 5px;
+}
+
+.advanced-search .form-check {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto; /* Prevent the checkbox from growing */
+  margin-right: 10px; /* Add some space between the filters */
+}
+
+.advanced-search .form-check-label {
+  margin-left: 5px;
+}
+
+.advanced-search .form-check-input {
+  width: 20px; /* Set a specific width for the checkbox */
+  height: 20px; /* Set a specific height for the checkbox */
+}
+
+button {
+  background-color: #007BFF;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Restaurant Card Styles */
+.restaurant-card {
+  height: 450px; /* Set a specific height for the card */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.restaurant-card-img-wrapper {
+  position: relative;
+  height: 300px;
+}
+
+.restaurant-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.restaurant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.btn {
+  align-self: center;
+  margin-top: 10px;
+}
+
+/* Restaurant Details Styles */
+.restaurant-details-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-details-container h4 {
+  border-bottom: 2px solid #007BFF;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.restaurant-details-container img {
+  height: 300px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.restaurant-card-price {
+  min-height: 20px; /* Set a specific minimum height for the price description */
+}

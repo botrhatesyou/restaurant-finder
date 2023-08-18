@@ -1,0 +1,71 @@
+/* HeroSection.css*/
+
+.hero-section {
+  position: relative;
+  height: 80vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: center; /* Horizontally center the content */
+}
+
+.hero-bg {
+  position: absolute; /* Added this */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  z-index: 1; /* Ensure this is lower than the overlay and content */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-search .form-control {
+  width: 300px; /* Adjust based on your preference */
+}
+
+/* Additional styles for better appearance */
+.display-3 {
+  font-weight: bold;
+  color: #fff;
+}
+
+.lead {
+  color: #ddd;
+}
+
+/* ... (existing styles) ... */
+
+.welcome-message {
+  font-size: 2.5rem; /* Increase the font size */
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Enhance the text shadow */
+}
+
+
+.hero-section .welcome-message {
+  background-color: transparent; /* Remove the background color */
+  border: none; /* Remove the border */
+}
+
+.hero-section .container {
+  background-color: transparent;
+  box-shadow: none; /* Remove any potential shadow */
+  border: none; /* Remove any potential border */
+}
