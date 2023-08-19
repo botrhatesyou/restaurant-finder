@@ -22,7 +22,8 @@ function RestaurantList() {
     const [sortOption, setSortOption] = useState('best_match');
     const [triggerSearch, setTriggerSearch] = useState(false);
     const [isFirstLoad, setIsFirstLoad] = useState(true);
-    const [loadingMessage, setLoadingMessage] = useState("Loading...");
+    const [loadingMore, setLoadingMore] = useState(false);
+
 
 
     // Function to fetch restaurants based on filters and pagination
@@ -51,8 +52,9 @@ function RestaurantList() {
             setLoading(false);
             loadingRef.current = false;
             setIsFirstLoad(false);
-            setLoadingMessage("Loading..."); // Reset the loading message to "Loading..."
+            setLoadingMore(false); // Set loadingMore to false after the restaurants have been fetched
         })
+        
         .catch(error => {
             console.error("Error fetching restaurants:", error.response);
             setError("Failed to fetch restaurants. Please try again later.");
@@ -73,7 +75,6 @@ function RestaurantList() {
         setHasMore(true);
         setFetchedPages([]);
         setIsFirstLoad(true); // Set isFirstLoad to true before triggering the search
-        setLoadingMessage("Loading..."); // Set the loading message to "Loading..."
         setTriggerSearch(true);
     };
     
@@ -92,9 +93,10 @@ function RestaurantList() {
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - threshold && !loadingRef.current && hasMore) {
             setPage(prevPage => prevPage + 1);
             setIsFirstLoad(false); // Set isFirstLoad to false when the user scrolls to the end of the page
-            setLoadingMessage("Loading more restaurants..."); // Set the loading message to "Loading more restaurants..."
+            setLoadingMore(true); // Set loadingMore to true when the user scrolls to the end of the page
         }
     }, [hasMore]);
+    
     
 
     // Get cuisine from URL query parameter
@@ -205,7 +207,7 @@ function RestaurantList() {
                 </Form>
             </div>
             
-            {loading && <p>{loadingMessage}</p>}
+            {loading && <p>{isFirstLoad ? "Loading..." : (loadingMore ? "Loading more restaurants..." : "")}</p>}
             {error && <p>{error}</p>}
             {!loading && !error && restaurants.length === 0 && <p>No restaurants found.</p>}
             
