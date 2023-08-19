@@ -45,7 +45,7 @@ function RestaurantList() {
             if (response.data.businesses.length < 10) {
                 setHasMore(false);
             }
-            setRestaurants(response.data.businesses);
+            setRestaurants(prevRestaurants => [...prevRestaurants, ...response.data.businesses]);
             setFetchedPages(prevPages => [...prevPages, page]);
             setLoading(false);
             loadingRef.current = false;
