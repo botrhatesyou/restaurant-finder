@@ -68,8 +68,10 @@ function RestaurantList() {
         setPage(1);
         setHasMore(true);
         setFetchedPages([]);
+        setIsFirstLoad(true); // Set isFirstLoad to true before triggering the search
         setTriggerSearch(true);
-    };    
+    };
+    
 
     // Update sort state when sort option changes
     const handleSortChange = (selectedSortOption) => {
@@ -83,9 +85,9 @@ function RestaurantList() {
     
         if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - threshold && !loadingRef.current && hasMore) {
             setPage(prevPage => prevPage + 1);
+            setIsFirstLoad(false); // Set isFirstLoad to false when the user scrolls to the end of the page
         }
     }, [hasMore]);
-    
 
     // Get cuisine from URL query parameter
     const location = useLocation();
