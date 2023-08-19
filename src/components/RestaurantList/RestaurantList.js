@@ -45,7 +45,7 @@ function RestaurantList() {
             if (response.data.businesses.length < 10) {
                 setHasMore(false);
             }
-            setRestaurants(prevRestaurants => [...prevRestaurants, ...response.data.businesses]);
+            setRestaurants(response.data.businesses);
             setFetchedPages(prevPages => [...prevPages, page]);
             setLoading(false);
             loadingRef.current = false;
@@ -63,12 +63,12 @@ function RestaurantList() {
     // Handle search form submission
     const handleSearch = (e) => {
         e.preventDefault();
-        setRestaurants([]);
+        setRestaurants([]); // Clear the existing list of restaurants
         setPage(1);
         setHasMore(true);
         setFetchedPages([]);
         setTriggerSearch(true);
-    };
+    };    
 
     // Update sort state when sort option changes
     const handleSortChange = (selectedSortOption) => {
