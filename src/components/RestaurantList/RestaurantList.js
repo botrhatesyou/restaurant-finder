@@ -224,7 +224,6 @@ function RestaurantList() {
                     </div>
                 ))}
             </div>
-            {!isFirstLoad && loading && <p>Loading more restaurants...</p>}
             <BackToTopButton />
         </div>
     );
