@@ -108,7 +108,8 @@ function RestaurantList() {
             initialLoad.current = false;
             setIsFirstLoad(false);
         }
-    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants, isFirstLoad]);
+    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants, isFirstLoad, cuisine]);
+    
     
     
 
