@@ -102,11 +102,12 @@ function RestaurantList() {
         if (cuisineFromQuery) {
             setCuisine(cuisineFromQuery);
             fetchRestaurants(1, searchQuery, cuisineFromQuery, priceRange, openNow, sortOption);
-        } else {
+        } else if (!triggerSearch) { // Only fetch the first 50 restaurants if no filters have been applied
             fetchRestaurants(1);
         }
         initialLoad.current = false;
-    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants]);
+    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants, triggerSearch]);
+    
     
 
     // Add and remove scroll event listener
