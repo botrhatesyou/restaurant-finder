@@ -25,7 +25,7 @@ function RestaurantList() {
 
     // Function to fetch restaurants based on filters and pagination
     const fetchRestaurants = useCallback((page, searchTerm, selectedCuisine, selectedPriceRange, isOpenNow, selectedSortOption) => {
-        if (fetchedPages.includes(page) || loadingRef.current) return;
+        if (!hasMore || loadingRef.current) return;
     
         setLoading(true);
         loadingRef.current = true;
@@ -37,16 +37,15 @@ function RestaurantList() {
                 price: selectedPriceRange,
                 open_now: isOpenNow,
                 sort_by: selectedSortOption,
-                limit: 10,
-                offset: (page - 1) * 10
+                limit: 50, // Increase the limit to 50
+                offset: (page - 1) * 50 // Update the offset to match the new limit
             }
         })
         .then(response => {
-            if (response.data.businesses.length < 10) {
+            if (response.data.businesses.length < 50) { // Update the check to match the new limit
                 setHasMore(false);
             }
             setRestaurants(prevRestaurants => [...prevRestaurants, ...response.data.businesses]);
-            setFetchedPages(prevPages => [...prevPages, page]);
             setLoading(false);
             loadingRef.current = false;
             setIsFirstLoad(false);
@@ -57,7 +56,8 @@ function RestaurantList() {
             setLoading(false);
             loadingRef.current = false;
         });
-    }, [fetchedPages, loadingRef]);
+    }, [hasMore, loadingRef]);
+    
     
 
     // Handle search form submission
