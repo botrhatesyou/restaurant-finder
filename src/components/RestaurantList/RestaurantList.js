@@ -58,6 +58,7 @@ function RestaurantList() {
         });
     }, [hasMore, loadingRef]);
     
+
     
 
     // Handle search form submission
@@ -99,14 +100,16 @@ function RestaurantList() {
 
     // Initial fetch of restaurants
     useEffect(() => {
-        if (cuisineFromQuery) {
-            setCuisine(cuisineFromQuery);
-            fetchRestaurants(1, searchQuery, cuisineFromQuery, priceRange, openNow, sortOption);
-        } else {
-            fetchRestaurants(1);
+        if (isFirstLoad) {
+            if (cuisineFromQuery) {
+                setCuisine(cuisineFromQuery);
+                fetchRestaurants(1, searchQuery, cuisineFromQuery, priceRange, openNow, sortOption);
+            } else {
+                fetchRestaurants(1);
+            }
+            initialLoad.current = false;
         }
-        initialLoad.current = false;
-    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants]);
+    }, [cuisineFromQuery, searchQuery, priceRange, openNow, sortOption, fetchRestaurants, isFirstLoad]);
     
     
 
@@ -121,10 +124,10 @@ function RestaurantList() {
     
     // Fetch more restaurants when page changes
     useEffect(() => {
-        if (!fetchedPages.includes(page)) {
+        if (!isFirstLoad && !fetchedPages.includes(page)) {
             fetchRestaurants(page, searchQuery, cuisine, priceRange, openNow, sortOption);
         }
-    }, [page, fetchedPages, searchQuery, cuisine, priceRange, openNow, sortOption, fetchRestaurants]);
+    }, [page, fetchedPages, searchQuery, cuisine, priceRange, openNow, sortOption, fetchRestaurants, isFirstLoad]);
     
 
     // Fetch restaurants when search is triggered
