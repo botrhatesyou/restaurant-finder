@@ -15,7 +15,7 @@ const MapView = ({ restaurants, center }) => {
       <GoogleMap
         center={center}
         zoom={14}
-        mapContainerStyle={{ width: '100%', height: '500px' }}
+        mapContainerStyle={{ width: '100%', height: '800px' }}
         onClick={handleMapClick}
       >
         {/* Render markers for each restaurant */}
