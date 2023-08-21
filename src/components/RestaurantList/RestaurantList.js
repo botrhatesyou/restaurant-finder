@@ -40,19 +40,19 @@ function RestaurantList() {
                 price: selectedPriceRange,
                 open_now: isOpenNow,
                 sort_by: selectedSortOption,
-                limit: 50, // Increase the limit to 50
-                offset: (page - 1) * 50 // Update the offset to match the new limit
+                limit: 50, 
+                offset: (page - 1) * 50 
             }
         })
         .then(response => {
-            if (response.data.businesses.length < 50) { // Update the check to match the new limit
+            if (response.data.businesses.length < 50) { 
                 setHasMore(false);
             }
             setRestaurants(prevRestaurants => [...prevRestaurants, ...response.data.businesses]);
             setLoading(false);
             loadingRef.current = false;
             setIsFirstLoad(false);
-            setLoadingMore(false); // Set loadingMore to false after the restaurants have been fetched
+            setLoadingMore(false); 
         })
         
         .catch(error => {
