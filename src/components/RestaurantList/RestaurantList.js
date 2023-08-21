@@ -76,6 +76,9 @@ function RestaurantList() {
         setFetchedPages([]);
         setIsFirstLoad(true); // Set isFirstLoad to true before triggering the search
         setTriggerSearch(true);
+        if (cuisineFromQuery) {
+            setCuisine(''); // Clear the cuisine state variable if it was set from the URL query parameter
+        }
     };
     
     
