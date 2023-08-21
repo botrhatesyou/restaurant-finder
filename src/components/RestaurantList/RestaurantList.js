@@ -108,10 +108,10 @@ function RestaurantList() {
     const cuisineFromQuery = searchParams.get('cuisine');
     
     useEffect(() => {
-        if (cuisineFromQuery) {
+        if (cuisineFromQuery && !cuisine) {
             setCuisine(cuisineFromQuery);
         }
-    }, [cuisineFromQuery]);
+    }, [cuisineFromQuery, cuisine]);    
 
     // Initial fetch of restaurants
     useEffect(() => {
