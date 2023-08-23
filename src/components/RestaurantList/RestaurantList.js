@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import api from '../services/api.js';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Form, Button, Card, Dropdown } from 'react-bootstrap';
 import './RestaurantList.css';
 import BackToTopButton from '../BackToTop/BackToTop.js';
@@ -63,8 +63,8 @@ function RestaurantList() {
         });
     }, [hasMore, loadingRef]);
     
-    
 
+    const navigate = useNavigate();
     
 
     // Handle search form submission
@@ -76,11 +76,8 @@ function RestaurantList() {
         setFetchedPages([]);
         setIsFirstLoad(true); // Set isFirstLoad to true before triggering the search
         setTriggerSearch(true);
-        if (cuisineFromQuery) {
-            setCuisine(''); // Clear the cuisine state variable if it was set from the URL query parameter
-        }
+        navigate(`/restaurants?cuisine=${cuisine}`); // Update the URL query parameter
     };
-    
     
 
     // Update sort state when sort option changes
