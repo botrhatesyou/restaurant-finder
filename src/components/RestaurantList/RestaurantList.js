@@ -76,8 +76,14 @@ function RestaurantList() {
         setFetchedPages([]);
         setIsFirstLoad(true); // Set isFirstLoad to true before triggering the search
         setTriggerSearch(true);
-        navigate(`/restaurants?cuisine=${cuisine}`); // Update the URL query parameter
+        
+        // Update the URL with all active filters
+        let queryParams = [];
+        if (cuisine) queryParams.push(`cuisine=${cuisine}`);
+        if (priceRange) queryParams.push(`price=${priceRange}`);
+        navigate(`/restaurants?${queryParams.join('&')}`);
     };
+    
     
 
     // Update sort state when sort option changes
@@ -105,10 +111,18 @@ function RestaurantList() {
     const cuisineFromQuery = searchParams.get('cuisine');
     
     useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const cuisineFromQuery = searchParams.get('cuisine');
+        const priceFromQuery = searchParams.get('price');
+    
         if (cuisineFromQuery && !cuisine) {
             setCuisine(cuisineFromQuery);
         }
-    }, [cuisineFromQuery, cuisine]);    
+        if (priceFromQuery && !priceRange) {
+            setPriceRange(priceFromQuery);
+        }
+    }, [location.search, cuisine, priceRange, setCuisine, setPriceRange]);    
+     
 
     // Initial fetch of restaurants
     useEffect(() => {
